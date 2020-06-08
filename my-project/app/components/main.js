@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from './header';
 import TodoItem from './todoItem';
 import AddTodo from './addTodo';
 import * as actionCreators from '../actions/index'
-import { ADD_ITEM } from '../constants/action_types';
+import DisplayCount from './display_count';
+import styles from '../styles/main_styles'
 
 
 class Main extends Component {
@@ -36,39 +37,27 @@ class Main extends Component {
         console.log('dismissed');
     }}>
         <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-            <AddTodo submitHandler={this.submitHandler} />
-            <View style={styles.list}>
-                <FlatList
-                    data={this.props.getTodos}
-                    renderItem={({ item }) => (
-                    <TodoItem item={item} pressHandler={this.pressHandler} />
-                    )}
-                />
-            </View>
+          <Header />
+          <View style={styles.content}>
+              {this.props.getTodos.length > 0 ? <DisplayCount/> : null}
 
-        </View>
+              <AddTodo submitHandler={this.submitHandler} />
+
+              <View style={styles.list}>
+                  <FlatList
+                      data={this.props.getTodos}
+                      renderItem={({ item }) => (
+                      <TodoItem item={item} pressHandler={this.pressHandler} />
+                      )}
+                  />
+              </View>
+
+          </View>
         </View>
     </TouchableWithoutFeedback>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    padding: 40,
-    flex: 1,
-  },
-  list: {
-    marginTop: 20,
-    flex: 1,
-  },
-});
 
 function mapDispatchToProps(dispatch) {
     return {
