@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from './header';
 import TodoItem from './todoItem';
 import AddTodo from './addTodo';
-import * as actionCreators from '../actions/actions'
+import * as actionCreators from '../actions/index'
 import { ADD_ITEM } from '../constants/action_types';
 
 
@@ -47,7 +47,7 @@ class Main extends Component {
                     )}
                 />
             </View>
-            <Button />
+
         </View>
         </View>
     </TouchableWithoutFeedback>
