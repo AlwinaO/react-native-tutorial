@@ -30,6 +30,11 @@ class Main extends Component {
     }
   };
 
+// Limit todo list to 5 items maximum
+// Color code DisplayCounter container (green, yellow, red) as list reaches max
+// Clear all item from list
+// Order list by priority
+
   render() {
     return (
     <TouchableWithoutFeedback onPress={() => {
@@ -68,9 +73,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state)
     return {
-        getTodos: state ? state.todos ? state.todos : [] : []
+        getTodos: state ? (state.todos ? state.todos : []) : []
         // getTodos: state.todos
     }
 }
