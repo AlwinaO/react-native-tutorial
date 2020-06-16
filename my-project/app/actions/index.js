@@ -24,9 +24,3 @@ export function delete_item(item_key) {
         item_key
     }
 }
-
-export function clear_store() {
-    return {
-        type: TYPES.CLEAR_STORE
-    }
-}

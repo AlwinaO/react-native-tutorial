@@ -10,10 +10,6 @@ function reducer(state = initialState, action) {
             return {
                 todos: [...action.items]
             }
-        case TYPES.CLEAR_STORE:
-            return {
-                todos: []
-            }
         case TYPES.ADD_ITEM:
             return {
                 todos: [action.item, ...state.todos]
