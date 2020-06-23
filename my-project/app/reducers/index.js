@@ -18,6 +18,7 @@ function reducer(state = initialState, action) {
             return {
                 todos: state.todos.filter((element) => !(element.key === action.item_key))
             }
+        // add a case to clear all items
     }
 }
 
